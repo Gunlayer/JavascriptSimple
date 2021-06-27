@@ -1,17 +1,22 @@
 "use strict"
-function example3 () {
-    let a = 10;
-    let b = -4;
-    let result = null;
-    if (a>=0 && b >= 0) {
-        result = a - b;        
-    }
-    if (a<0 && b<0) {
-        result = a * b;        
-    }
-    if ((a<0 && b>=0) || (a>=0 && b<0)) {
-        result = a + b;
-    }
-    alert (result);
+function example3() {
+    const products = [
+        {
+            id: 3,
+            price: 200,
+        },
+        {
+            id: 4,
+            price: 900,
+        },
+        {
+            id: 1,
+            price: 1000,
+        },
+    ];
+    products.forEach (function (products) {
+        products.price = products.price - products.price /100*15;
+        console.log (products);
+    })
 }
-example3 ()
+example3()
