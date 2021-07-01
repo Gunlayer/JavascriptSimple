@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+        //__________es5________________
+        function Post(author, text, date) {
+            this.author = author;
+            this.text = text;
+            this.date = date;
+        }
+        Post.prototype.edit = function (textEdit) {
+            this.text = textEdit;
+        }
+        function AttachedPost(author, text, date, highlighted) {
+            Post.call(this, author, text, date);
+            this.highlighted = highlighted;
+        }
+        AttachedPost.prototype = Object.create(Post.prototype);
+        AttachedPost.prototype.console = AttachedPost;
+        AttachedPost.prototype.makeTextHighlighted = function () {
+            this.highlighted = true;
+        }
+        let newPost = new Post("Alex", "Lorem ipsum dolor sit amet.", "30.06.2021");
+        console.log(newPost);
+        newPost.edit("Edited text");
+        console.log(newPost.text);
+        let newPost2 = new AttachedPost("Denis", "Some text", "30.06.2021", false);
+        console.log(newPost2);
+        newPost2.makeTextHighlighted();
+        console.log(newPost2.highlighted); 
+
+        //__________es6________________
+        class Post {
+            constructor(author, text, date) {
+                this.author = author;
+                this.text = text;
+                this.date = date;
+            }
+            edit(textEdit) {
+                this.text = textEdit;
+            }
+        }
+        class AttachedPost extends Post {
+            constructor(author, text, date, highlighted) {
+                super(author, text, date);
+                this.highlighted = highlighted;
+            }
+            makeTextHighlighted() {
+                this.highlighted = true;
+            }
+        }
+        let newPost = new Post("Alex", "Lorem ipsum dolor sit amet.", "30.06.2021");
+        console.log(newPost);
+        newPost.edit("Edited text");
+        console.log(newPost.text);
+        let newPost2 = new AttachedPost("Denis", "Some text", "30.06.2021", false);
+        console.log(newPost2);
+        newPost2.makeTextHighlighted();
+        console.log(newPost2.highlighted);
+
+    </script>
+</body>
+
+</html>
