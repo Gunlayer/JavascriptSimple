@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        "use strict";
+        /**
+         * 
+         * @param {number} min - get minimum value
+         * @param {number} max - get maximum value
+         * @returns {number}  return random integer
+         */
+        function getRndInteger(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+        function converIntToArr(num) {
+            return num.toString().split('');
+        }
+
+        function CreateObj(u, t, h) {
+            if (t == undefined) {
+                t = 0;
+            }
+            if (h == undefined) {
+                h = 0;
+            }
+
+            this.units = +u;
+            this.tens = +t;
+            this.hundereds = +h;
+        }
+        let randomInt = getRndInteger(0, 999);
+        let array = converIntToArr(randomInt);
+        let obj = new CreateObj(array[0], array[1], array[2]);
+        console.log(randomInt);
+        console.log(array);
+        console.log(obj);
+    </script>
+</body>
+
+</html>
